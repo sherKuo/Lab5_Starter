@@ -1,2 +1,3 @@
 # Lab 5 - Starter
-Hello, testing.
+Sherilyn Kuo 
+Angelina Le 
