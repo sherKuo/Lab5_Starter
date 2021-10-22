@@ -2,8 +2,10 @@
 
 var selectedHornImage = document.getElementById("horn-select");
 selectedHornImage.addEventListener("change", setImage);
-var sound = document.querySelector("audio");
+
 var img = document.querySelector("img");
+//var sound = document.getElementById('main').getElementsByClassName("hidden");
+var sound = document.querySelector("audio");
 
 var slider = document.getElementById("volume");
 slider.addEventListener("change", setVol);
@@ -21,7 +23,6 @@ function init() {
 }
 
 function setImage(){
-// TODO
   if (selectedHornImage.value == "air-horn"){
     //set image
     img.src = "./assets/images/air-horn.svg";
