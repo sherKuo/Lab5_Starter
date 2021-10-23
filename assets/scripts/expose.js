@@ -11,7 +11,6 @@ var sound = document.querySelector("audio");
 var click = document.querySelector("button")
 click.addEventListener("click", playSound);
 
-
 var slider = document.getElementById("volume");
 slider.addEventListener("change", setVol);
 
@@ -25,15 +24,9 @@ function init() {
   // TODO
 }
 
-jsConfetti.addConfetti({
-  emojis: ['⚡️', '🦄', '✨', '💫', '🌸'],
-  emojiSize: 25,
-  confettiNumber: 30,
-})
-
 function playSound(){
     sound.play();
-    if(selectedHornImage.value == "party-horn"){
+    if(selectedHornImage.value == "party-horn" && volume.value != 0){
       jsConfetti.addConfetti();
     }
 }
@@ -59,14 +52,13 @@ function setImgSnd(){
   }
 }
 
-
 function setVol(){
-  console.log(volume.value);
-  volume.value = slider.value;
+  volumeSelector.value = volume.value;
+  console.log("volume.value: " + volume.value);
+  console.log("volumeSelector.value: " + volumeSelector.value);
   if (volume.value == 0){
     volIcon.src = "./assets/icons/volume-level-0.svg";
     volIcon.alt = "Volume 0";
-    slider.value = 0;
   }
   else if (volume.value > 1 && volume.value < 33){
     volIcon.src = "./assets/icons/volume-level-1.svg";
@@ -80,4 +72,6 @@ function setVol(){
     volIcon.src = "./assets/icons/volume-level-3.svg";
     volIcon.alt = "Volume 3";
   }
+  sound.volume = volume.value/100;
 }
+
