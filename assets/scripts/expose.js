@@ -1,11 +1,16 @@
 // expose.js
 
+const jsConfetti = new JSConfetti()
+
 var selectedHornImage = document.getElementById("horn-select");
-selectedHornImage.addEventListener("change", setImage);
+selectedHornImage.addEventListener("change", setImgSnd);
 
 var img = document.querySelector("img");
-//var sound = document.getElementById('main').getElementsByClassName("hidden");
 var sound = document.querySelector("audio");
+
+var click = document.querySelector("button")
+click.addEventListener("click", playSound);
+
 
 var slider = document.getElementById("volume");
 slider.addEventListener("change", setVol);
@@ -14,15 +19,26 @@ var volumeSelector = document.getElementById("volume-controls");
 var volume = volumeSelector.querySelector("input");
 var volIcon = volumeSelector.querySelector("img");
 
-
-
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
   // TODO
 }
 
-function setImage(){
+jsConfetti.addConfetti({
+  emojis: ['⚡️', '🦄', '✨', '💫', '🌸'],
+  emojiSize: 25,
+  confettiNumber: 30,
+})
+
+function playSound(){
+    sound.play();
+    if(selectedHornImage.value == "party-horn"){
+      jsConfetti.addConfetti();
+    }
+}
+
+function setImgSnd(){
   if (selectedHornImage.value == "air-horn"){
     //set image
     img.src = "./assets/images/air-horn.svg";
@@ -46,6 +62,7 @@ function setImage(){
 
 function setVol(){
   console.log(volume.value);
+  volume.value = slider.value;
   if (volume.value == 0){
     volIcon.src = "./assets/icons/volume-level-0.svg";
     volIcon.alt = "Volume 0";
