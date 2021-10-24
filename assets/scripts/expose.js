@@ -53,9 +53,6 @@ function setImgSnd(){
 }
 
 function setVol(){
-  volumeSelector.value = volume.value;
-  console.log("volume.value: " + volume.value);
-  console.log("volumeSelector.value: " + volumeSelector.value);
   if (volume.value == 0){
     volIcon.src = "./assets/icons/volume-level-0.svg";
     volIcon.alt = "Volume 0";
